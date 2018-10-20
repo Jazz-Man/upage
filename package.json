@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "next \"src/app/\"",
+    "preserve": "npm run build-public && npm run build-funcs && npm run build-app && npm run copy-deps && npm run install-deps",
+    "serve": "npm  run preserve && NODE_ENV=production firebase serve",
+    "predeploy": "npm run build-public && npm run build-funcs && npm run build-app && npm run copy-deps",
+    "deploy": "npm run clean && npm run predeploy && firebase deploy",
+    "clean": "rimraf \"dist/functions/**\" && rimraf \"dist/public\"",
+    "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
+    "build-funcs": "babel \"src/functions\" --out-dir \"dist/functions\"",
+    "build-app": "next build \"src/app/\"",
+    "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
+    "install-deps": "cd \"dist/functions\" && npm i"
   },
   "repository": {
     "type": "git",
@@ -18,13 +26,17 @@
   "dependencies": {
     "@material-ui/core": "^3.2.2",
     "@material-ui/icons": "^3.0.1",
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.5",
     "next": "^7.0.2",
+    "prop-types": "latest",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "prop-types": "latest"
+    "react-dom": "^16.5.2"
   },
   "devDependencies": {
-    "@zeit/next-sass": "^1.0.1",
-    "node-sass": "^4.9.4"
+    "@babel/cli": "^7.1.2",
+    "cpx": "^1.5.0",
+    "firebase-tools": "^5.1.1",
+    "rimraf": "^2.6.2"
   }
 }

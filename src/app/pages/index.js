@@ -1,3 +1,4 @@
+import Layout from '../components/layout'
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -23,22 +24,24 @@ function DenseAppBar(props) {
   return (
     <Fragment>
       <CssBaseline />
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar variant="dense">
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit">
-              Photos
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
+      <Layout>
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar variant="dense">
+              <IconButton
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="Menu"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" color="inherit">
+                Photos TEST
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </Layout>
     </Fragment>
   );
 }
