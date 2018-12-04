@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = (theme:any) => ({
   layout: {
     width: 'auto',
     marginLeft: theme.spacing.unit * 3,
