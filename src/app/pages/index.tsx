@@ -1,23 +1,13 @@
-import React from "react";
-import {withStyles} from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import styles from './../components/styles';
+import React, { Component } from "react";
+import Header from "../components/header";
 
-function DenseAppBar(props: any) {
-    const {classes} = props;
+class IndexPage extends Component<any> {
+
+  render() {
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar variant="dense">
-                    <Typography variant="h6" color="inherit">
-                        Next.JS TypeScript
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-        </div>
+        <Header/>
     );
+  }
 }
 
-export default withStyles(styles)(DenseAppBar);
+export default IndexPage;
