@@ -14,7 +14,7 @@ class Layout extends React.Component {
   }
 }
 
-export default class MyApp extends App {
+export default class Root extends App {
   render() {
     const { Component, pageProps } = this.props;
 
